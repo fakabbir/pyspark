@@ -20,10 +20,12 @@ wget http://mirrors.estointernet.in/apache/spark/spark-2.4.0/spark-2.4.0-bin-had
 tar xvf spark-2.4.0-bin-hadoop2.7.tgz
 mv spark-2.4.0-bin-hadoop2.7 /usr/local/spark
 echo "export PATH='$PATH':/usr/local/spark/bin" >> ~/.bashrc
+source ~/.bashrc
 if [ "$1" == "master" ]; then
     cp /usr/local/spark/conf/spark-env.sh.template /usr/local/spark/conf/spark-env.sh
     echo "export SPARK_MASTER_HOST='$2'" >> /usr/local/spark/conf/spark-env.sh
-    echo "export JAVA_HOME=$JAVA_HOME" >> /usr/local/spark/conf/spark-env.sh
+    echo "$JAVA_HOME could change"
+    echo "export JAVA_HOME=/usr/lib/jvm/java-8-oracle" >> /usr/local/spark/conf/spark-env.sh
     cp slave /usr/local/spark/conf
     echo "Setup Complete"
 else
