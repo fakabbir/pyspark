@@ -35,3 +35,21 @@ e.g
 - Copy the content of .ssh/id_rsa.pub (of master) to .ssh/authorized_keys (of all the slaves).
 
 - To Check the connection run `ssh slave01`
+
+- sample test file: https://norvig.com/big.txt
+
+- code:
+```
+from pyspark import SparkContext
+sc = SparkContext(master = "spark://138.68.52.140:7077")
+# sc.stop()
+
+def getContent(w):
+    return w.lower()
+fileProcess = 'big.txt'
+rdd = sc.textFile(fileProcess)
+rdd1 = rdd.map(getContent)
+rdd1.take(-1)
+~
+
+```
