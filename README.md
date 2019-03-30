@@ -53,3 +53,5 @@ rdd1.take(-1)
 ~
 
 ```
+
+- To use spark-submit, run `source ~/.bashrc`
