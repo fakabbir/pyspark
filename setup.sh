@@ -29,6 +29,7 @@ tar xvf spark-2.4.0-bin-hadoop2.7.tgz
 mv spark-2.4.0-bin-hadoop2.7 /usr/local/spark
 rm spark-2.4.0-bin-hadoop2.7.tgz
 echo "export PATH='$PATH':/usr/local/spark/bin" >> ~/.bashrc
+echo "export SPARK_HOME=/usr/local/spark/bin" >> ~/.bashrc
 source ~/.bashrc
 if [ "$1" == "master" ]; then
     cp /usr/local/spark/conf/spark-env.sh.template /usr/local/spark/conf/spark-env.sh
@@ -44,4 +45,4 @@ else
     echo "========================Setup Complete=============================="
 
 fi
-
+source ~/.bashrc
