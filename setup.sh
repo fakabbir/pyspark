@@ -2,7 +2,7 @@
 apt-get update
 if [ "$1" == "master" ]; then
     echo "Running setup for master server"
-    apt-get install openssh-server openssh-client
+    apt-get install openssh-server openssh-client -y
     ssh-keygen -t rsa -P ""
     cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
 else
@@ -12,7 +12,7 @@ fi
 cat host-list >> /etc/hosts
 apt-get install python-software-properties -y
 add-apt-repository ppa:webupd8team/java
-# apt-get install --reinstall ca-certificates
+apt-get install --reinstall ca-certificates
 apt-get install oracle-java8-installer -y
 apt-get install scala -y
 apt-get install python3-pip -y
