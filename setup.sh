@@ -10,12 +10,13 @@ else
 fi
 
 cat host-list >> /etc/hosts
-apt-get install python-software-properties
+apt-get install python-software-properties -y
 add-apt-repository ppa:webupd8team/java
 # apt-get install --reinstall ca-certificates
-apt-get install oracle-java8-installer
-apt-get install scala
-
+apt-get install oracle-java8-installer -y
+apt-get install scala -y
+apt-get install python3-pip -y
+pip3 install pyspark -y
 wget http://mirrors.estointernet.in/apache/spark/spark-2.4.0/spark-2.4.0-bin-hadoop2.7.tgz
 tar xvf spark-2.4.0-bin-hadoop2.7.tgz
 mv spark-2.4.0-bin-hadoop2.7 /usr/local/spark
@@ -24,6 +25,9 @@ source ~/.bashrc
 if [ "$1" == "master" ]; then
     cp /usr/local/spark/conf/spark-env.sh.template /usr/local/spark/conf/spark-env.sh
     echo "export SPARK_MASTER_HOST='$2'" >> /usr/local/spark/conf/spark-env.sh
+    echo "export PYSPARK_DRIVER_PYTHON=python3" >> /usr/local/spark/conf/spark-env.sh
+    echo "export PYSPARK_PYTHON=/usr/bin/python3" >> /usr/local/spark/conf/spark-env.sh
+
     echo "$JAVA_HOME could change"
     echo "export JAVA_HOME=/usr/lib/jvm/java-8-oracle" >> /usr/local/spark/conf/spark-env.sh
     cp slave /usr/local/spark/conf
