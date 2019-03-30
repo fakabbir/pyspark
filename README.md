@@ -55,3 +55,5 @@ rdd1.take(-1)
 ```
 
 - To use spark-submit, run `source ~/.bashrc`
+
+REFERENCE: https://medium.com/ymedialabs-innovation/apache-spark-on-a-multi-node-cluster-b75967c8cb2b
