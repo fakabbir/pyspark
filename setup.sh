@@ -13,6 +13,7 @@ cat host-list >> /etc/hosts
 apt-get install python-software-properties -y
 add-apt-repository ppa:webupd8team/java
 apt-get install --reinstall ca-certificates
+apt-get update
 apt-get install oracle-java8-installer -y
 apt-get install scala -y
 apt-get install python3-pip -y
@@ -29,8 +30,8 @@ if [ "$1" == "master" ]; then
     echo "export PYSPARK_PYTHON=/usr/bin/python3" >> /usr/local/spark/conf/spark-env.sh
 
     echo "$JAVA_HOME could change"
-    echo "export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64" >> /usr/local/spark/conf/spark-env.sh
-    cp slave /usr/local/spark/conf
+    echo "export JAVA_HOME='$JAVA_HOME'" >> /usr/local/spark/conf/spark-env.sh
+    cp slaves /usr/local/spark/conf
     echo "Setup Complete"
 else
     echo "Setup Complete"
